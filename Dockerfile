@@ -24,8 +24,6 @@ COPY jrio/webapps/jrio-docs $JETTY_BASE/webapps/jrio-docs/
 
 COPY repository /mnt/jrio-repository/
 
-RUN chown -R jrio:jrio $JETTY_BASE
-
 USER jrio
 
 EXPOSE 8080
