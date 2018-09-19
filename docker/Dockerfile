@@ -14,13 +14,13 @@ ENV JETTY_BASE /jrio/base
 COPY docker/jrio.sh /
 
 COPY jetty $JETTY_HOME/
-COPY jrio/start.d $JETTY_BASE/start.d/
+COPY --chown=jrio:jrio jrio/start.d $JETTY_BASE/start.d/
 
-COPY jrio/webapps/ROOT $JETTY_BASE/webapps/ROOT/
-COPY jrio/webapps/jrio $JETTY_BASE/webapps/jrio/
-COPY docker/applicationContext-repository.xml $JETTY_BASE/webapps/jrio/WEB-INF/
-COPY jrio/webapps/jrio-client $JETTY_BASE/webapps/jrio-client/
-COPY jrio/webapps/jrio-docs $JETTY_BASE/webapps/jrio-docs/
+COPY --chown=jrio:jrio jrio/webapps/ROOT $JETTY_BASE/webapps/ROOT/
+COPY --chown=jrio:jrio jrio/webapps/jrio $JETTY_BASE/webapps/jrio/
+COPY --chown=jrio:jrio docker/applicationContext-repository.xml $JETTY_BASE/webapps/jrio/WEB-INF/
+COPY --chown=jrio:jrio jrio/webapps/jrio-client $JETTY_BASE/webapps/jrio-client/
+COPY --chown=jrio:jrio jrio/webapps/jrio-docs $JETTY_BASE/webapps/jrio-docs/
 
 COPY repository /mnt/jrio-repository/
 
