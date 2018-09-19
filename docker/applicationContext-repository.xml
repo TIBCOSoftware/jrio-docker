@@ -1,0 +1,34 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+	
+	<bean class="com.jaspersoft.jrio.common.repository.FileSystemRepository">
+		<constructor-arg><ref bean="baseJasperReportsContext"/></constructor-arg>
+		<constructor-arg><value>/mnt/jrio-repository</value></constructor-arg>
+	</bean>
+	
+	<bean class="com.jaspersoft.jrio.common.repository.FileSystemPersistenceServiceFactory" factory-method="instance"/> 
+	
+	<!--
+	<bean class="com.jaspersoft.jrio.common.repository.s3.S3RepositoryService">
+		<property name="jasperReportsContext" ref="baseJasperReportsContext"/>
+		<property name="s3Service">
+			<bean class="com.jaspersoft.jrio.common.repository.s3.S3ServiceFactory">
+				<property name="region" value="us-east-1"/>
+	-->
+				<!--
+				<property name="accessKey" value="put-id-here"/>
+				<property name="secretKey" value="put-key-here"/>
+				-->
+	<!--
+			</bean>
+		</property>
+		<property name="bucketName" value="jrio-repo-sample"/>
+		<property name="pathPrefix" value="jrio-repository/"/>
+	</bean>
+	
+	<bean class="com.jaspersoft.jrio.common.repository.s3.S3RepositoryPersistenceServiceFactory" factory-method="instance"/>
+	-->
+
+</beans>
