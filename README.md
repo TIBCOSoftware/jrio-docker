@@ -1,6 +1,3 @@
-# jrio-docker
-# JasperReports IO Dockerfile
-
 # TIBCO  JasperReports&reg; IO for Docker
 
 # Table of contents
@@ -12,23 +9,7 @@
   1. [Cloning the repository](#cloning-the-repository)
   1. [Repository structure](#repository-structure)
 1. [Build and run](#build-and-run)
-  1. [Building and running]
-  1. [Building and running](
-#building-and-running-with-a-pre-existing-postgresql-instance)
-  1. [Creating a new PostgreSQL instance during build](
-#creating-a-new-postgresql-instance-during-build)
-1. [Additional configurations](#additional-configurations)
-
-1. [Customizing JasperReports Server at runtime](
-#customizing-jasperreports-server-at-runtime)
   1. [Applying customizations](#applying-customizations)
-  1. [Applying customizations manually](
-#applying-customizations-manually)
-  1. [Applying customizations with Docker Compose](
-#applying-customizations-with-docker-compose)
-  1. [Restarting JasperReports Server](
-#restarting-jasperreports-server)
-1. [Logging in](#logging-in)
 
 
 # Introduction
@@ -64,7 +45,7 @@ and unpack it.
 
 ## Cloning the repository(optional)
 
-Cloning this JasperReports IO Docker repository is not required as the Dockerfile and all the supported files in this repo are packed inside the JasperReports IO distribution. 
+Cloning this JasperReports IO Docker repository is not required as the Dockerfile and all the supported files in this repo are packed inside the JasperReports IO zip distribution. 
 
 ## Repository structure inside docker folder
 
@@ -157,7 +138,6 @@ For additional questions regarding docker and docker-compose usage see:
 # Copyright
 &copy; Copyright 2018. TIBCO Software Inc.
 Licensed under a BSD-type license. See TIBCO LICENSE.txt for license text.  
-
 ___
 
 Software Version: 1.0.0-&nbsp;
