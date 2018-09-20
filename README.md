@@ -118,52 +118,24 @@ as a base for the new container
 
 # Customizing JasperReports IO at runtime
 
-The default JRIO configuration can be overridden or altered at runtime with the help of startup script that copies content of /mnt/jrio-verlay. The files inside the Docker instance can be modified or altered with an overlay script.
+The default JRIO configuration can be overridden or altered at runtime with an overlay script. It copies the content of the /mnt/jrio-folder over /jrio/base. 
 
 Customizations can be added to JasperReports IO container at runtime
-via the `/path/jrio-overlay` directory created in local environment. All zip files in this directory are applied to
-`/usr/local/tomcat/webapps/jasperserver-pro` in sorted order (natural sort).
+via the `/path/jrio-overlay` directory created in local environment. The files in this directory are applied to
+`/jrio/base` in sorted order.
 
 ## Applying customizations
 
-The JRIO Docker image has a startup script in which it copies the content of the internal folder /mnt/jrio-overlay on top of the /jrio/base folder. (in JRIO standalone edition equivalent path is jrio-1.0.0/jrio)
-This allows overriding default configuration of the JRIO application by mounting /mnt/jrio-overlay folder to an external folder or Docker volume at image startup, which contains the custom configuration files.
-
-For example, the /mnt/jrio-overlay folder can be mounted to a host machine volume using a command like the following:
-
->docker run -it -p 5080:8080 -v /opt/jrio-overlay:/mnt/jrio-overlay jrio-standalone
-
-In this example, in order to override the applicationContext-repository.xml file of the JRIO web application, the modified configuration file needs to be placed at:
-
-/opt/jrio-overlay/webapps/jrio/WEB-INF/applicationContext-repository.xml
-
-For example:
 ```console
-mkdir /reports/jrio-overlay 
-cp -f applicationContext-repository.xml
-/reports/jrio-overlay/webapps/jrio/WEB-INF/applicationContext-repository.xml
-
-
-docker run -it -p 5080:8080 -v /opt/jrio-repository:/mnt/jrio-repository jrio-standalone
-docker volume create --name jrio-repository
-sudo cp repository.zip \
-/var/lib/docker/volumes/jrio-repository/_data
-docker run --name my-jrio -it -d -p 5080:8080 -v jrio-volume:/opt/jrio-repository:/mnt/jrio-repository jrio:1.0.0
+docker run --name my-jrio -it -d -p 5080:8080 -v /jrio/jrio-overlay:/mnt/jrio-overlay jrio:1.0.0
 ```
 Where:
 
 - `my-jrio` is the name of the new JasperReports IO container
-- `jrio-repository` is the name of the repository data volume
-- `repository.zip` is an archive containing repository resources
-- `/var/lib/docker/volumes/jrio-repository/_data` is an example path. Use `docker volume inspect`
-to get the local path to the volume for your system.
-- `jrio:1.0.0` - is an image name and version tag that is used
-as a base for the new container
-- `/mnt/jrio-repository` is default container repository
+- `/jrio/jrio-overlay` is a local repository mounted as a data volume where configuration files should be mimicking full path like 
+/jrio/jrio-overlay/webapps/jrio/WEB-INF/applicationContext-repository.xml
 
-See `scripts/entrypoint.sh` for implementation details and
-`docker-compose.yml` for a sample setup of a customization volume via Compose.
-
+See `docker/jrio.sh` for implementation details
 
 
 
