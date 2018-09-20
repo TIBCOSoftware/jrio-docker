@@ -105,7 +105,7 @@ persistent data and configurations.
 If repository is mounted as a volume, then default container repository is overridden and replaced with the external one.
 
 ```console
-docker run --name my-jrio -it -d -p 5080:8080 -v /opt/jrio-repository:/mnt/jrio-repository jrio:1.0.0
+docker run --name my-jrio -it -d -p 5080:8080 -v /jrio/jrio-repository:/mnt/jrio-repository jrio:1.0.0
 ```
 Where:
 
