@@ -53,15 +53,13 @@ The following software is required or recommended:
 - [docker-engine](https://docs.docker.com/engine/installation) version 17.12 or
 higher
 - [git](https://git-scm.com/downloads)
-- (*optional*) TIBCO  Jaspersoft&reg; commercial license.
+- (*optional*) TIBCO  JasperReports&reg; IO commercial license.
 - Contact your sales
-representative for information about licensing. If you do not specify a
-TIBCO Jaspersoft license, the evaluation license is used.
-
+representative for information about licensing. 
 
 ## Downloading JasperReports IO
 
-Download the JasperReports IO commercial zip archive from the Community website
+Download the JasperReports IO zip archive from the Community website
 and unpack it.
 
 ## Cloning the repository(optional)
@@ -137,7 +135,18 @@ Where:
 
 See `docker/jrio.sh` for implementation details
 
+## License
 
+By default, the JasperReports Server IO zip distribution is packaged with a 60 day evaluation license. Once the production license is obtained, it can be replaced using overlay. 
+
+```console
+
+$ docker run --name my-jrio -it -d -p 5080:8080 -v /jrio/jrio-license:/mnt/jrio-overlay jrio:1.0.0
+
+```
+Where:
+/jrio/jrio-license` is a local repository mounted as a data volume where the license file should be placed using a full path like 
+/jrio/jrio-overlay/webapps/jrio/WEB-INF/classes/jasperserver.license
 
 
 ## Docker documentation
@@ -152,7 +161,6 @@ Licensed under a BSD-type license. See TIBCO LICENSE.txt for license text.
 ___
 
 Software Version: 1.0.0-&nbsp;
-Document version number: 1016-JSP63-01
 
 TIBCO, Jaspersoft, and JasperReports are trademarks or
 registered trademarks of TIBCO Software Inc.
