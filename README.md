@@ -39,7 +39,7 @@ The following software is required or recommended:
 higher
 - [git](https://git-scm.com/downloads)
 - (*optional*) TIBCO  JasperReports&reg; IO commercial license.
-* Contact your sales
+*Contact your sales
 representative for information about licensing. 
 
 ## Downloading JasperReports IO
