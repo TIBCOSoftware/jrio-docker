@@ -10,10 +10,10 @@
 1. [Build and run](#build-and-run)
 1. [Building and running with default repository](#building-and-running-with-default-repository)
 1. [Mounting external repository folder as a volume](#mounting-external-repository-as-a-volume)
-1.[Customizing JasperReports IO at runtime](#customizing-jasperreports-io-at-runtime)
+1. [Customizing JasperReports IO at runtime](#customizing-jasperreports-io-at-runtime)
   1. [Applying customizations](#applying-customizations)
-  1.[License](#license)
-  1.[JasperReports IO - Professional Edition License Usage and Restrictions](#jrio-license-usage-and-restrictions)
+  1. [License](#license)
+  1. [JasperReports IO - Professional Edition License Usage and Restrictions](#jrio-license-usage-and-restrictions)
 
 
 # Introduction
@@ -145,7 +145,7 @@ JasperReports IO Professional Edition usage is restricted to a single machine in
 Licensed under a BSD-type license. See TIBCO LICENSE.txt for license text.  
 ___
 
-Software Version: 1.0.0-&nbsp
+Software Version: 1.0.0&nbsp;
 
 TIBCO, Jaspersoft, and JasperReports are trademarks or
 registered trademarks of TIBCO Software Inc.
