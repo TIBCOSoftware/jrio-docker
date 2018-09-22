@@ -142,7 +142,7 @@ JasperReports IO Professional Edition usage is restricted to a single machine in
 
 # Copyright
 &copy; Copyright 2018. TIBCO Software Inc.
-Licensed under a BSD-type license. See TIBCO LICENSE.txt for license text.  
+Licensed under a BSD-type license. See TIBCO LICENSE for license text.  
 ___
 
 Software Version: 1.0.0&nbsp;
