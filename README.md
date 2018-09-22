@@ -8,13 +8,12 @@
   1. [Cloning the repository(optional)](#cloning-the-repository(optional))
   1. [Repository structure](#repository-structure)
 1. [Build and run](#build-and-run)
-  1. [Building and running with default repository](#building-and-running-with-default-repository)
-  1. [Mounting external repository folder as a volume](#mounting-external-repository-as-a-volume)
+1. [Building and running with default repository](#building-and-running-with-default-repository)
+1. [Mounting external repository folder as a volume](#mounting-external-repository-as-a-volume)
 1.[Customizing JasperReports IO at runtime](#customizing-jasperreports-io-at-runtime)
   1. [Applying customizations](#applying-customizations)
- 1.[License](#license)
-    1.[JasperReports IO - Professional Edition License Usage and Restrictions](#jrio-license-usage-and-restrictions)
-    1.[Copyright](#copyright)
+  1.[License](#license)
+  1.[JasperReports IO - Professional Edition License Usage and Restrictions](#jrio-license-usage-and-restrictions)
 
 
 # Introduction
@@ -88,7 +87,7 @@ persistent data and configurations.
 If repository is mounted as a volume, then default container repository is overridden and replaced with the external one.
 
 ```console
-docker run --name my-jrio -it -p 5080:8080 \
+$ docker run --name my-jrio -it -p 5080:8080 \
 -v /jrio/jrio-repository:/mnt/jrio-repository jrio:1.0.0
 ```
 Where:
@@ -111,7 +110,7 @@ via the `/path/jrio-overlay` directory created in local environment. The files i
 ## Applying customizations
 
 ```console
-docker run --name my-jrio -it -p 5080:8080 \
+$ docker run --name my-jrio -it -p 5080:8080 \
 -v /jrio/jrio-overlay:/mnt/jrio-overlay jrio:1.0.0
 ```
 Where:
@@ -131,6 +130,7 @@ $ docker run --name my-jrio -it -p \
 5080:8080 -v /jrio/jrio-license:/mnt/jrio-overlay jrio:1.0.0
 ```
 Where:
+
 - `my-jrio` is the name of the new JasperReports IO container
 - `/jrio/jrio-license` is a local repository mounted as a data volume where the license file should be placed using a full path like 
 /jrio/jrio-overlay/webapps/jrio/WEB-INF/classes/jasperserver.license
