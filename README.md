@@ -4,12 +4,14 @@
 
 1. [Introduction](#introduction)
 1. [Prerequisites](#prerequisites)
-  1. [Downloading JasperReports IO](
-#downloading-jasperreports-io)
-  1. [Cloning the repository](#cloning-the-repository)
+  1. [Downloading JasperReports IO](#downloading-jasperreports-io)
+  1. [Cloning the repository(optional)](#cloning-the-repository(optional))
   1. [Repository structure](#repository-structure)
 1. [Build and run](#build-and-run)
   1. [Applying customizations](#applying-customizations)
+1.[License](#license)
+  1.[JasperReports IO - Professional Edition License Usage and Restrictions](#jrio-license-usage-and-restrictions)
+
 
 
 # Introduction
@@ -31,7 +33,7 @@ For more information about JasperReports Server, see the
 
 The following software is required or recommended:
 
-- [docker-engine](https://docs.docker.com/engine/installation) version 17.12 or
+- [docker-engine](https://docs.docker.com/engine/installation) version 17.10 or
 higher
 - [git](https://git-scm.com/downloads)
 - (*optional*) TIBCO  JasperReports&reg; IO commercial license.
@@ -40,14 +42,14 @@ representative for information about licensing.
 
 ## Downloading JasperReports IO
 
-Download the JasperReports IO zip archive from the Community website
+Download the JasperReports IO zip archive from the [Jaspersoft website](https://jaspersoft.com/download)
 and unpack it.
 
 ## Cloning the repository(optional)
 
 Cloning this JasperReports IO Docker repository is not required as the Dockerfile and all the supported files in this repo are packed inside the JasperReports IO zip distribution. 
 
-## Repository structure inside docker folder
+## Docker folder repository structure
 
 When you unpack the JasperReports IO zip, the following files are placed under docker folder:
 
@@ -84,7 +86,7 @@ persistent data and configurations.
 If repository is mounted as a volume, then default container repository is overridden and replaced with the external one.
 
 ```console
-docker run --name my-jrio -it -d -p 5080:8080 -v /jrio/jrio-repository:/mnt/jrio-repository jrio:1.0.0
+docker run --name my-jrio -it -p 5080:8080 -v /jrio/jrio-repository:/mnt/jrio-repository jrio:1.0.0
 ```
 Where:
 
@@ -106,12 +108,12 @@ via the `/path/jrio-overlay` directory created in local environment. The files i
 ## Applying customizations
 
 ```console
-docker run --name my-jrio -it -d -p 5080:8080 -v /jrio/jrio-overlay:/mnt/jrio-overlay jrio:1.0.0
+docker run --name my-jrio -it -p 5080:8080 -v /jrio/jrio-overlay:/mnt/jrio-overlay jrio:1.0.0
 ```
 Where:
 
 - `my-jrio` is the name of the new JasperReports IO container
-- `/jrio/jrio-overlay` is a local repository mounted as a data volume where configuration files should be mimicking full path like 
+- `/jrio/jrio-overlay` is a local repository mounted as a data volume where configuration files should be placed using full path like 
 /jrio/jrio-overlay/webapps/jrio/WEB-INF/applicationContext-repository.xml
 
 See `docker/jrio.sh` for implementation details
@@ -122,25 +124,28 @@ By default, the JasperReports Server IO zip distribution is packaged with a 60 d
 
 ```console
 
-$ docker run --name my-jrio -it -d -p 5080:8080 -v /jrio/jrio-license:/mnt/jrio-overlay jrio:1.0.0
+$ docker run --name my-jrio -it -p 5080:8080 -v /jrio/jrio-license:/mnt/jrio-overlay jrio:1.0.0
 
 ```
 Where:
-/jrio/jrio-license` is a local repository mounted as a data volume where the license file should be placed using a full path like 
+- `my-jrio` is the name of the new JasperReports IO container
+- `/jrio/jrio-license` is a local repository mounted as a data volume where the license file should be placed using a full path like 
 /jrio/jrio-overlay/webapps/jrio/WEB-INF/classes/jasperserver.license
 
+## JasperReports IO - Professional Edition License Usage and Restrictions
+
+JasperReports IO Professional Edition usage is restricted to a single machine instance and may not be installed into a distributed or clustered machine configuration. 
 
 ## Docker documentation
 For additional questions regarding docker and docker-compose usage see:
 - [docker-engine](https://docs.docker.com/engine/installation) documentation
-- [docker-compose](https://docs.docker.com/compose/overview/) documentation
 
 # Copyright
 &copy; Copyright 2018. TIBCO Software Inc.
 Licensed under a BSD-type license. See TIBCO LICENSE.txt for license text.  
 ___
 
-Software Version: 1.0.0-&nbsp;
+Software Version: 1.0.0-&nbsp
 
 TIBCO, Jaspersoft, and JasperReports are trademarks or
 registered trademarks of TIBCO Software Inc.
@@ -148,5 +153,3 @@ in the United States and/or other countries.
 
 Docker is a trademark or registered trademark of Docker, Inc.
 in the United States and/or other countries.
-
-
