@@ -4,14 +4,17 @@
 
 1. [Introduction](#introduction)
 1. [Prerequisites](#prerequisites)
-  1. [Downloading JasperReports IO](#downloading-jasperreports-io)
+  1. [Downloading JasperReports IO](##downloading-jasperreports-io)
   1. [Cloning the repository(optional)](#cloning-the-repository(optional))
   1. [Repository structure](#repository-structure)
 1. [Build and run](#build-and-run)
+  1. [Building and running with default repository](#building-and-running-with-default-repository)
+  1. [Mounting external repository folder as a volume](#mounting-external-repository-as-a-volume)
+1.[Customizing JasperReports IO at runtime](#customizing-jasperreports-io-at-runtime)
   1. [Applying customizations](#applying-customizations)
-1.[License](#license)
-  1.[JasperReports IO - Professional Edition License Usage and Restrictions](#jrio-license-usage-and-restrictions)
-
+ 1.[License](#license)
+    1.[JasperReports IO - Professional Edition License Usage and Restrictions](#jrio-license-usage-and-restrictions)
+    1.[Copyright](#copyright)
 
 
 # Introduction
@@ -37,7 +40,7 @@ The following software is required or recommended:
 higher
 - [git](https://git-scm.com/downloads)
 - (*optional*) TIBCO  JasperReports&reg; IO commercial license.
-- Contact your sales
+* Contact your sales
 representative for information about licensing. 
 
 ## Downloading JasperReports IO
@@ -76,8 +79,7 @@ for your build. This image will be used to create containers.
 - `my-jrio` is the name of the new JasperReports IO container.
 - `-p 5080:8080` port mapping (jetty service is started by default on port 8080, so container port should be mapped to host port (for ex. to 5080 etc)
 
-## Using data volumes
-## Mount external repository folder as a volume
+## Mounting external repository folder as a volume
 
 Docker recommends the use of [data volumes](
 https://docs.docker.com/engine/tutorials/dockervolumes/) for managing
@@ -86,12 +88,13 @@ persistent data and configurations.
 If repository is mounted as a volume, then default container repository is overridden and replaced with the external one.
 
 ```console
-docker run --name my-jrio -it -p 5080:8080 -v /jrio/jrio-repository:/mnt/jrio-repository jrio:1.0.0
+docker run --name my-jrio -it -p 5080:8080 \
+-v /jrio/jrio-repository:/mnt/jrio-repository jrio:1.0.0
 ```
 Where:
 
 - `my-jrio` is the name of the new JasperReports IO container
-- `/reports/jrio-repository` is a local repository mounted as a data volume (make sure that this shared path is configured in your environment rom Docker -> Preferences... -> File Sharing)
+- `/jrio/jrio-repository` is a local repository mounted as a data volume (make sure that this shared path is configured in your environment from Docker -> Preferences... -> File Sharing)
 - `jrio:1.0.0` - is an image name and version tag that is used
 as a base for the new container
 - `/mnt/jrio-repository` is default container repository that is being overrriden
@@ -108,7 +111,8 @@ via the `/path/jrio-overlay` directory created in local environment. The files i
 ## Applying customizations
 
 ```console
-docker run --name my-jrio -it -p 5080:8080 -v /jrio/jrio-overlay:/mnt/jrio-overlay jrio:1.0.0
+docker run --name my-jrio -it -p 5080:8080 \
+-v /jrio/jrio-overlay:/mnt/jrio-overlay jrio:1.0.0
 ```
 Where:
 
@@ -116,16 +120,15 @@ Where:
 - `/jrio/jrio-overlay` is a local repository mounted as a data volume where configuration files should be placed using full path like 
 /jrio/jrio-overlay/webapps/jrio/WEB-INF/applicationContext-repository.xml
 
-See `docker/jrio.sh` for implementation details
+*See `docker/jrio.sh` for implementation details
 
-## License
+# License
 
 By default, the JasperReports Server IO zip distribution is packaged with a 60 day evaluation license. Once the production license is obtained, it can be replaced using overlay. 
 
 ```console
-
-$ docker run --name my-jrio -it -p 5080:8080 -v /jrio/jrio-license:/mnt/jrio-overlay jrio:1.0.0
-
+$ docker run --name my-jrio -it -p \
+5080:8080 -v /jrio/jrio-license:/mnt/jrio-overlay jrio:1.0.0
 ```
 Where:
 - `my-jrio` is the name of the new JasperReports IO container
@@ -136,9 +139,6 @@ Where:
 
 JasperReports IO Professional Edition usage is restricted to a single machine instance and may not be installed into a distributed or clustered machine configuration. 
 
-## Docker documentation
-For additional questions regarding docker and docker-compose usage see:
-- [docker-engine](https://docs.docker.com/engine/installation) documentation
 
 # Copyright
 &copy; Copyright 2018. TIBCO Software Inc.
