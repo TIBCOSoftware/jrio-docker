@@ -23,8 +23,8 @@ supporting files for
 building, configuring, and running
 TIBCO JasperReports&reg; IO
 in a Docker container.  
-The distribution can be downloaded from 
-[https://github.com/TIBCOSoftware/jrio-docker](#https://github.com/TIBCOSoftware/js-docker).
+This distribution can be downloaded from 
+[Github](#https://github.com/TIBCOSoftware/js-docker).
 
 This configuration has been certified using JasperReports IO Professional 1.0.0
 
