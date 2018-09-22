@@ -87,8 +87,7 @@ persistent data and configurations.
 If repository is mounted as a volume, then default container repository is overridden and replaced with the external one.
 
 ```console
-$ docker run --name my-jrio -it -p 5080:8080 \
--v /jrio/jrio-repository:/mnt/jrio-repository jrio:1.0.0
+$ docker run --name my-jrio -it -p 5080:8080 -v /jrio/jrio-repository:/mnt/jrio-repository jrio:1.0.0
 ```
 Where:
 
@@ -110,8 +109,7 @@ via the `/path/jrio-overlay` directory created in local environment. The files i
 ## Applying customizations
 
 ```console
-$ docker run --name my-jrio -it -p 5080:8080 \
--v /jrio/jrio-overlay:/mnt/jrio-overlay jrio:1.0.0
+$ docker run --name my-jrio -it -p 5080:8080 -v /jrio/jrio-overlay:/mnt/jrio-overlay jrio:1.0.0
 ```
 Where:
 
@@ -126,8 +124,7 @@ Where:
 By default, the JasperReports Server IO zip distribution is packaged with a 60 day evaluation license. Once the production license is obtained, it can be replaced using overlay. 
 
 ```console
-$ docker run --name my-jrio -it -p \
-5080:8080 -v /jrio/jrio-license:/mnt/jrio-overlay jrio:1.0.0
+$ docker run --name my-jrio -it -p 5080:8080 -v /jrio/jrio-license:/mnt/jrio-overlay jrio:1.0.0
 ```
 Where:
 
